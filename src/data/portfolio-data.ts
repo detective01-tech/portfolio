@@ -317,42 +317,54 @@ export const SERVICES_DATA: ServiceCard[] = [
     title: 'Full-Stack Web Platforms',
     icon: 'terminal',
     description: 'Modern web architectures utilizing React/Next.js, Tailwind CSS, TypeScript, and Node.js. Built for lightning-fast First Contentful Paint and bulletproof state management.',
-    accentColor: 'text-primary'
+    accentColor: 'text-primary',
+    availability: 'Available now',
+    engagement: 'Project build'
   },
   {
     id: 'mobile-apps',
     title: 'Cross-Platform Mobile Apps',
     icon: 'mobile_friendly',
     description: 'High-performance mobile applications engineered with Flutter. Single codebase reaching both iOS and Android with 60 FPS fluidity, hardware biometrics, and offline storage.',
-    accentColor: 'text-primary'
+    accentColor: 'text-primary',
+    availability: 'Available now',
+    engagement: 'MVP to launch'
   },
   {
     id: 'backend-apis',
     title: 'Backend & API Systems',
     icon: 'hub',
     description: 'Robust RESTful and real-time WebSocket endpoints in Node.js and Python FastAPI. Scalable connection pools, rate limiting, token rotation, and SQL database tuning.',
-    accentColor: 'text-surface-tint'
+    accentColor: 'text-surface-tint',
+    availability: 'Available now',
+    engagement: 'Architecture or build'
   },
   {
     id: 'devsecops-audits',
     title: 'DevSecOps & Security Audits',
     icon: 'shield',
     description: 'Hardening CI/CD delivery pipelines, automated vulnerability assessments (Trivy, SonarQube, Gitleaks), secret management with Vault, and OWASP compliance auditing.',
-    accentColor: 'text-tertiary'
+    accentColor: 'text-tertiary',
+    availability: 'Limited capacity',
+    engagement: 'Audit or advisory'
   },
   {
     id: 'cloud-infra',
     title: 'Cloud Infra & Containerization',
     icon: 'cloud_done',
     description: 'AWS infrastructure automation using Terraform, Docker container clustering, Linux server administration, zero-downtime rolling deploys, and automated backups.',
-    accentColor: 'text-surface-tint'
+    accentColor: 'text-surface-tint',
+    availability: 'Available now',
+    engagement: 'Infrastructure sprint'
   },
   {
     id: 'database-arch',
     title: 'Database & Data Pipeline Architecture',
     icon: 'dataset',
     description: 'Schema design in PostgreSQL, Supabase integration, Redis caching hierarchies, distributed transactions, zero-data-loss backup automation, and migration safety.',
-    accentColor: 'text-secondary'
+    accentColor: 'text-secondary',
+    availability: 'Available now',
+    engagement: 'Review or build'
   }
 ];
 

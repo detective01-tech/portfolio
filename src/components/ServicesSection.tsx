@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { Handshake, Terminal, Smartphone, Network, ShieldCheck, CloudCheck, Database } from 'lucide-react';
+import { Handshake, Terminal, Smartphone, Network, ShieldCheck, CloudCheck, Database, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { SERVICES_DATA } from '../data/portfolio-data';
 
 export const ServicesSection: React.FC = () => {
@@ -42,16 +42,33 @@ export const ServicesSection: React.FC = () => {
         <div className="flex items-center gap-2 text-[#8ed5ff]">
           <Handshake className="w-5 h-5 text-[#8ed5ff]" />
           <span className="font-mono-code text-[11px] uppercase tracking-widest font-semibold">
-            Specialized Offerings
+            Available Services
           </span>
         </div>
         <h2 className="font-headline text-[32px] sm:text-[40px] md:text-[44px] font-bold tracking-tight text-[#e3e1e9]">
-          Services &amp; Capabilities.
+          Engineering support for your next release.
         </h2>
         <p className="text-[17px] text-[#bdc8d1] max-w-2xl leading-relaxed">
-          Delivering end-to-end engineering excellence for modern tech companies, fast-scaling startups, and secure enterprises.
+          Choose a focused build, architecture sprint, or security engagement. Every service is shaped around your product stage, team, and delivery goals.
         </p>
       </motion.div>
+
+      <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-[#13251f] border border-[#56e5a9]/30">
+        <div className="flex items-start gap-3">
+          <CheckCircle2 className="w-5 h-5 mt-0.5 text-[#56e5a9] shrink-0" />
+          <div>
+            <p className="text-[14px] font-semibold text-[#e3e1e9]">Currently accepting new projects</p>
+            <p className="text-[12px] text-[#bdc8d1] mt-1">Remote engagements · UTC-friendly collaboration · Clear weekly deliverables</p>
+          </div>
+        </div>
+        <a
+          href="#contact"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[#56e5a9] text-[#06251b] text-[12px] font-bold hover:bg-[#8ed5ff] transition-colors shrink-0"
+        >
+          Start a conversation
+          <ArrowUpRight className="w-3.5 h-3.5" />
+        </a>
+      </div>
 
       {/* 6 Premium Cards with Staggered Scroll Reveals */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -82,6 +99,19 @@ export const ServicesSection: React.FC = () => {
             <p className="text-[14px] text-[#bdc8d1] leading-relaxed">
               {service.description}
             </p>
+
+            <div className="mt-auto pt-4 border-t border-[#3e484f]/40 flex flex-col gap-2 text-[11px] font-mono-code">
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-[#bdc8d1]">Availability</span>
+                <span className={service.availability === 'Limited capacity' ? 'text-[#f7c873]' : 'text-[#56e5a9]'}>
+                  {service.availability}
+                </span>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-[#bdc8d1]">Format</span>
+                <span className="text-[#8ed5ff] text-right">{service.engagement}</span>
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>

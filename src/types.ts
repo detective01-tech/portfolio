@@ -71,6 +71,8 @@ export interface ServiceCard {
   icon: string;
   description: string;
   accentColor: string;
+  availability: string;
+  engagement: string;
 }
 
 export interface CareerMilestone {
