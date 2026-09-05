@@ -3,24 +3,26 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { lazy, useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { AboutSection } from './components/AboutSection';
-import { SkillsSection } from './components/SkillsSection';
-import { DevSecOpsPipeline } from './components/DevSecOpsPipeline';
-import { ProjectsSection } from './components/ProjectsSection';
 import { CaseStudyModal } from './components/CaseStudyModal';
-import { WorkflowSection } from './components/WorkflowSection';
-import { ServicesSection } from './components/ServicesSection';
-import { ExperienceSection } from './components/ExperienceSection';
-import { BuildingInPublic } from './components/BuildingInPublic';
-import { SecurityPhilosophy } from './components/SecurityPhilosophy';
-import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { Toast } from './components/Toast';
 import { CommandPalette } from './components/CommandPalette';
+import { DeferredSection } from './components/DeferredSection';
 import { ProjectItem } from './types';
+
+const LazyAboutSection = lazy(() => import('./components/AboutSection').then(({ AboutSection }) => ({ default: AboutSection })));
+const LazySkillsSection = lazy(() => import('./components/SkillsSection').then(({ SkillsSection }) => ({ default: SkillsSection })));
+const LazyDevSecOpsPipeline = lazy(() => import('./components/DevSecOpsPipeline').then(({ DevSecOpsPipeline }) => ({ default: DevSecOpsPipeline })));
+const LazyProjectsSection = lazy(() => import('./components/ProjectsSection').then(({ ProjectsSection }) => ({ default: ProjectsSection })));
+const LazyWorkflowSection = lazy(() => import('./components/WorkflowSection').then(({ WorkflowSection }) => ({ default: WorkflowSection })));
+const LazyServicesSection = lazy(() => import('./components/ServicesSection').then(({ ServicesSection }) => ({ default: ServicesSection })));
+const LazyExperienceSection = lazy(() => import('./components/ExperienceSection').then(({ ExperienceSection }) => ({ default: ExperienceSection })));
+const LazyBuildingInPublic = lazy(() => import('./components/BuildingInPublic').then(({ BuildingInPublic }) => ({ default: BuildingInPublic })));
+const LazySecurityPhilosophy = lazy(() => import('./components/SecurityPhilosophy').then(({ SecurityPhilosophy }) => ({ default: SecurityPhilosophy })));
+const LazyContactSection = lazy(() => import('./components/ContactSection').then(({ ContactSection }) => ({ default: ContactSection })));
 
 export default function App() {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<ProjectItem | null>(null);
@@ -85,45 +87,22 @@ export default function App() {
           onProjectsClick={() => handleScrollToSection('projects')}
         />
 
-        <div className="lazy-section">
-          <AboutSection />
-        </div>
-
-        <div className="lazy-section">
-          <SkillsSection />
-        </div>
-
-        <div className="lazy-section">
-          <DevSecOpsPipeline />
-        </div>
-
-        <div className="lazy-section">
-          <ProjectsSection onOpenCaseStudy={(proj) => setSelectedCaseStudy(proj)} />
-        </div>
-
-        <div className="lazy-section">
-          <WorkflowSection />
-        </div>
-
-        <div className="lazy-section">
-          <ServicesSection />
-        </div>
-
-        <div className="lazy-section">
-          <ExperienceSection />
-        </div>
-
-        <div className="lazy-section">
-          <BuildingInPublic />
-        </div>
-
-        <div className="lazy-section">
-          <SecurityPhilosophy />
-        </div>
-
-        <div className="lazy-section">
-          <ContactSection onShowToast={showToast} />
-        </div>
+        <DeferredSection id="about" render={() => <LazyAboutSection />} />
+        <DeferredSection id="skills" render={() => <LazySkillsSection />} />
+        <DeferredSection id="devsecops" render={() => <LazyDevSecOpsPipeline />} />
+        <DeferredSection
+          id="projects"
+          render={() => <LazyProjectsSection onOpenCaseStudy={(proj) => setSelectedCaseStudy(proj)} />}
+        />
+        <DeferredSection id="workflow" render={() => <LazyWorkflowSection />} />
+        <DeferredSection id="services" render={() => <LazyServicesSection />} />
+        <DeferredSection id="experience" render={() => <LazyExperienceSection />} />
+        <DeferredSection id="building-in-public" render={() => <LazyBuildingInPublic />} />
+        <DeferredSection id="security" render={() => <LazySecurityPhilosophy />} />
+        <DeferredSection
+          id="contact"
+          render={() => <LazyContactSection onShowToast={showToast} />}
+        />
       </main>
 
       {/* Footer */}
