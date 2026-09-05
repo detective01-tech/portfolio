@@ -67,9 +67,9 @@ export const BuildingInPublic: React.FC = () => {
 
         {/* Contribution Heatmap Container */}
         <div className="p-5 rounded-2xl bg-[#0d0e13] border border-[#34343a] overflow-x-auto">
-          <div className="flex items-center justify-between mb-4 font-mono-code text-[12px] text-[#bdc8d1]">
-            <span>Continuous Engineering Dispatch (Last 52 Weeks)</span>
-            <span className="text-[#56e5a9] font-bold">1,480+ Total Commits</span>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4 font-mono-code text-[12px] text-[#bdc8d1]">
+            <span className="leading-relaxed">Continuous Engineering Dispatch (Last 52 Weeks)</span>
+            <span className="text-[#56e5a9] font-bold shrink-0">1,480+ Total Commits</span>
           </div>
 
           {/* Render CSS Grid Heatmap with interactive cell hover */}
@@ -106,12 +106,12 @@ export const BuildingInPublic: React.FC = () => {
 
         {/* Live Terminal Feed Simulation */}
         <div className="mt-8 p-5 rounded-2xl bg-[#0d0e13] border border-[#34343a] font-mono-code text-[12px]">
-          <div className="flex items-center justify-between text-[#bdc8d1] mb-3 pb-2 border-b border-[#1e1f25]">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-[#bdc8d1] mb-3 pb-2 border-b border-[#1e1f25]">
+            <div className="flex items-start gap-2 min-w-0">
               <span className="text-[#56e5a9]">sohail@devsecops-box:~$</span>
-              <span className="text-[#e3e1e9]">git log -n 4 --oneline --graph</span>
+              <span className="text-[#e3e1e9] break-all">git log -n 4 --oneline --graph</span>
             </div>
-            <span className="text-[10px] text-[#bdc8d1] uppercase">Click commit to inspect</span>
+            <span className="text-[10px] text-[#bdc8d1] uppercase sm:text-right">Click commit to inspect</span>
           </div>
 
           <div className="flex flex-col gap-2 text-[#e3e1e9]">
@@ -121,14 +121,13 @@ export const BuildingInPublic: React.FC = () => {
                 onClick={() => setSelectedCommit(commit)}
                 whileHover={{ x: 4 }}
                 transition={{ duration: 0.15 }}
-                className="text-left flex items-start gap-2 hover:bg-[#1a1b21] p-1.5 rounded-lg transition-colors cursor-pointer group"
+                className="text-left grid grid-cols-[auto_1fr_auto] sm:flex sm:items-start gap-x-2 gap-y-1 hover:bg-[#1a1b21] p-1.5 rounded-lg transition-colors cursor-pointer group"
               >
-                <span className="text-[#8ed5ff] font-bold group-hover:underline">
+                <span className="text-[#8ed5ff] font-bold group-hover:underline whitespace-nowrap">
                   * {commit.hash}
                 </span>
-                <span className="text-[#bdc8d1]">({commit.branch})</span>
-                <span className="text-[#e3e1e9] flex-1">{commit.message}</span>
-                <span className="text-[#87929a] text-[11px] shrink-0">{commit.timeAgo}</span>
+                <span className="text-[#bdc8d1] min-w-0 break-words">({commit.branch}) {commit.message}</span>
+                <span className="text-[#87929a] text-[11px] shrink-0 justify-self-end">{commit.timeAgo}</span>
               </motion.button>
             ))}
           </div>
@@ -139,11 +138,11 @@ export const BuildingInPublic: React.FC = () => {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="mt-4 p-3 rounded-lg bg-[#1a1b21] border border-[#38bdf8]/40 flex items-center justify-between overflow-hidden"
+                className="mt-4 p-3 rounded-lg bg-[#1a1b21] border border-[#38bdf8]/40 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 overflow-hidden"
               >
-                <div className="flex items-center gap-2 text-[#e3e1e9]">
+                <div className="flex items-start gap-2 text-[#e3e1e9] min-w-0">
                   <Check className="w-4 h-4 text-[#56e5a9]" />
-                  <span>
+                  <span className="break-words">
                     Commit <strong className="text-[#8ed5ff]">{selectedCommit.hash}</strong> verified:
                     0 secrets, 0 policy regressions. Author:{' '}
                     <span className="text-[#56e5a9]">{selectedCommit.author}</span>

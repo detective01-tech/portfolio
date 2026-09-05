@@ -82,6 +82,11 @@
   font-family: var(--font-mono);
 }
 
+.lazy-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 720px;
+}
+
 @keyframes terminal-blink {
   0%, 49% {
     opacity: 1;

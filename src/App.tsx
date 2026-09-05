@@ -85,25 +85,45 @@ export default function App() {
           onProjectsClick={() => handleScrollToSection('projects')}
         />
 
-        <AboutSection />
+        <div className="lazy-section">
+          <AboutSection />
+        </div>
 
-        <SkillsSection />
+        <div className="lazy-section">
+          <SkillsSection />
+        </div>
 
-        <DevSecOpsPipeline />
+        <div className="lazy-section">
+          <DevSecOpsPipeline />
+        </div>
 
-        <ProjectsSection onOpenCaseStudy={(proj) => setSelectedCaseStudy(proj)} />
+        <div className="lazy-section">
+          <ProjectsSection onOpenCaseStudy={(proj) => setSelectedCaseStudy(proj)} />
+        </div>
 
-        <WorkflowSection />
+        <div className="lazy-section">
+          <WorkflowSection />
+        </div>
 
-        <ServicesSection />
+        <div className="lazy-section">
+          <ServicesSection />
+        </div>
 
-        <ExperienceSection />
+        <div className="lazy-section">
+          <ExperienceSection />
+        </div>
 
-        <BuildingInPublic />
+        <div className="lazy-section">
+          <BuildingInPublic />
+        </div>
 
-        <SecurityPhilosophy />
+        <div className="lazy-section">
+          <SecurityPhilosophy />
+        </div>
 
-        <ContactSection onShowToast={showToast} />
+        <div className="lazy-section">
+          <ContactSection onShowToast={showToast} />
+        </div>
       </main>
 
       {/* Footer */}
